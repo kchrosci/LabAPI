@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using LabAPI.Data;
 using LabAPI.Models;
+using LabAPI.Data;
 
 namespace LabAPI.Controllers
 {
