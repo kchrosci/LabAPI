@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using LabAPI.Data;
+using Npgsql;
 
 namespace LabAPI
 {
@@ -24,8 +25,13 @@ namespace LabAPI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StudentContext>(opt => opt.UseNpgsql
-            (Configuration.GetConnectionString("PostgreSqlConnection")));
+            var builder = new NpgsqlConnectionStringBuilder();
+            builder.ConnectionString = Configuration.GetConnectionString("PostgreSqlConnection");
+            builder.Username = Configuration["UserID"];
+            builder.Password = Configuration["Password"];
+
+
+            services.AddDbContext<StudentContext>(opt => opt.UseNpgsql(builder.ConnectionString));
 
             services.AddControllers();
 
