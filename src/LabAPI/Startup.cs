@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using LabAPI.Data;
 using Npgsql;
+using AutoMapper;
 
 namespace LabAPI
 {
@@ -34,6 +35,8 @@ namespace LabAPI
             services.AddDbContext<StudentContext>(opt => opt.UseNpgsql(builder.ConnectionString));
 
             services.AddControllers();
+            
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ILabAPIRepo, SqlLabAPIRepo>();
         }

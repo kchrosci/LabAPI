@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using LabAPI.Models;
 using LabAPI.Data;
+using AutoMapper;
+using LabAPI.Dtos;
 
 namespace LabAPI.Controllers
 {
@@ -10,25 +12,27 @@ namespace LabAPI.Controllers
     public class LabController : ControllerBase
     {
         private readonly ILabAPIRepo _repository;
-        public LabController(ILabAPIRepo repository){
+        private readonly IMapper _mapper;
+        public LabController(ILabAPIRepo repository, IMapper mapper){
             _repository = repository;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Student>> GetAllStudents()
+        public ActionResult<IEnumerable<StudentReadDto>> GetAllStudents()
         {
             var students = _repository.GetAllStudents();
-            return Ok(students);
+            return Ok(_mapper.Map<IEnumerable<StudentReadDto>>(students));
         }
         [HttpGet("{id}")]
-        public ActionResult<Student> GetStudentById(int id)
+        public ActionResult<StudentReadDto> GetStudentById(int id)
         {
             var student = _repository.GetStudentById(id);
             if(student== null){
                 return NotFound();
             }
-            return Ok(student);
+            return Ok(_mapper.Map<StudentReadDto>(student));
         }
     }
 }
