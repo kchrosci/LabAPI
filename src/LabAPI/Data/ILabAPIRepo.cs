@@ -3,7 +3,7 @@ using LabAPI.Models;
 
 namespace LabAPI.Data
 {
-    public interface IStudentAPIRepo
+    public interface ILabAPIRepo
     {
         bool SaveChanges();
         IEnumerable<Student> GetAllStudents();

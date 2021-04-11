@@ -9,8 +9,8 @@ namespace LabAPI.Controllers
     [ApiController]
     public class LabController : ControllerBase
     {
-        private readonly IStudentAPIRepo _repository;
-        public LabController(IStudentAPIRepo repository){
+        private readonly ILabAPIRepo _repository;
+        public LabController(ILabAPIRepo repository){
             _repository = repository;
         }
 

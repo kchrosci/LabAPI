@@ -3,7 +3,7 @@ using LabAPI.Models;
 
 namespace LabAPI.Data
 {
-    public class MockStudentAPIRepo : IStudentAPIRepo
+    public class MockStudentAPIRepo : ILabAPIRepo
     {
         public void CreateStudent(Student stud)
         {

@@ -9,6 +9,6 @@ namespace LabAPI.Data
         : base(options)
     {
     }
-        public DbSet<Command> StudentItems {get; set;}
+        public DbSet<Student> StudentItems {get; set;}
     }
 }
