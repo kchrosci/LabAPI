@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using LabAPI.Data;
 using Npgsql;
+using Newtonsoft.Json.Serialization;
 using AutoMapper;
 
 namespace LabAPI
@@ -33,6 +34,11 @@ namespace LabAPI
 
 
             services.AddDbContext<StudentContext>(opt => opt.UseNpgsql(builder.ConnectionString));
+
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             services.AddControllers();
             

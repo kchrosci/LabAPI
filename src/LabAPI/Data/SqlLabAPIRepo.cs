@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using LabAPI.Models;
 using System.Linq;
+using System;
 
 namespace LabAPI.Data{
     public class SqlLabAPIRepo : ILabAPIRepo
@@ -13,12 +14,18 @@ namespace LabAPI.Data{
 
         public void CreateStudent(Student stud)
         {
-            throw new System.NotImplementedException();
+            if(stud==null){
+                throw new ArgumentNullException(nameof(stud));
+            }
+            _context.StudentItems.Add(stud);
         }
 
         public void DeleteStudent(Student stud)
         {
-            throw new System.NotImplementedException();
+           if(stud == null){
+               throw new ArgumentNullException(nameof(stud));
+           }
+           _context.StudentItems.Remove(stud);
         }
 
         public IEnumerable<Student> GetAllStudents()
@@ -33,12 +40,12 @@ namespace LabAPI.Data{
 
         public bool SaveChanges()
         {
-            throw new System.NotImplementedException();
+            return (_context.SaveChanges() >= 0);
         }
 
         public void UpdateStudent(Student stud)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
