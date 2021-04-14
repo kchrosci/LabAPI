@@ -50,7 +50,7 @@ namespace LabAPI.Controllers
 
 
         [HttpPut("{id}")]
-        public ActionResult<StudentReadDto> UpdateStudent(int id,StudentCreateDto studUpdateDto)
+        public ActionResult<StudentReadDto> UpdateStudent(int id,StudentUpdateDto studUpdateDto)
         {
             var studentModelRepo = _repository.GetStudentById(id);
 
@@ -89,7 +89,7 @@ namespace LabAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteUser(int id)
+        public ActionResult DeleteStudent(int id)
         {
             var studentModelRepo = _repository.GetStudentById(id);
             if(studentModelRepo == null){
