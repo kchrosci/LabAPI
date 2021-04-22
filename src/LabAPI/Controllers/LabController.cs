@@ -12,6 +12,8 @@ namespace LabAPI.Controllers
     [ApiController]
     public class LabController : ControllerBase
     {
+        //Random change
+        
         private readonly ILabAPIRepo _repository;
         private readonly IMapper _mapper;
         public LabController(ILabAPIRepo repository, IMapper mapper){
